@@ -1,12 +1,12 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
+
 const { Schema } = mongoose;
 
-// Define o schema do functionModel
 const functionSchema = new Schema({
   email: {
     type: String,
     required: true,
-    ref: 'User', // Referência ao campo "email" do userModel
+    ref: 'User',
   },
   nome: {
     type: String,
@@ -26,7 +26,4 @@ const functionSchema = new Schema({
   },
 });
 
-// Cria o modelo com base no schema
-const FunctionModel = mongoose.model('Function', functionSchema);
-
-module.exports = FunctionModel;
+export default mongoose.model('Function', functionSchema);
