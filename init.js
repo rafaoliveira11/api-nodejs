@@ -1,16 +1,18 @@
-import http from "http";
+import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+import userRoutes from "./src/controllers/userController.js";
 
-const rotas = {
-  "/": "API com Express e Node.js",
-  "/posts": "Rota de postagens",
-  "/autores": "Rota de autores",
-}
+dotenv.config();
 
-const api = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-type": "text-plain" });
-  res.end(rotas[req.url]);
-});
+const PORT = 3000;
+const app = express();
 
-api.listen(3000, () => {
-  console.log("API Iniciada.")
-});
+app.use(express.json());
+app.use("/users", userRoutes);
+
+mongoose.connect(process.env.DB_CONNECTION_STRING).then(() => {
+  app.listen(PORT, () => {
+    console.log(`API rodando na porta ${PORT}`);
+  });
+}).catch(err => console.error("Erro ao conectar ao banco:", err));
