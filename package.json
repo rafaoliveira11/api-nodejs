@@ -1,0 +1,16 @@
+{
+  "name": "api-parcial",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "init.js",
+  "scripts": {
+    "dev": "nodemon init.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
